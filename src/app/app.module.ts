@@ -1,22 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule      } from '@angular/core';
+import { HttpModule    } from '@angular/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MyCounterComponent } from './my-counter/my-counter.component';
+import { AppRoutingModule    } from './app-routing.module';
+import { AppComponent        } from './app.component';
+import { MyCounterComponent  } from './my-counter/my-counter.component';
 import { MyCounter2Component } from './my-counter-2/my-counter-2.component';
+import { CounterService      } from './counter.service';
+import { JokesService        } from './jokes.service';
+import { JokesComponent      } from './jokes/jokes.component';
+import { BothCountersComponent } from './both-counters/both-counters.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MyCounterComponent,
-    MyCounter2Component
+    MyCounter2Component,
+    JokesComponent,
+    BothCountersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  // we are not including our jokes service in this providers array
+  // because we are leaving that service as a multiple instance service.
+  // this way, you have an example of a singleton service (coounter-service)
+  // and a multiple-instance service (jokes-service) in the same app
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

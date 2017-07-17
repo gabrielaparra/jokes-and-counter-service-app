@@ -6,7 +6,9 @@ import { CounterService } from '../counter.service';
   selector: 'app-my-counter',
   templateUrl: 'my-counter.component.html',
   styles: [],
-  providers: [CounterService]
+  // providers: [CounterService]
+  // providers option is for creating a separate instance of
+  // the service in each component
 })
 
 export class MyCounterComponent implements OnInit {
